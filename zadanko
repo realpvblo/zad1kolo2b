@@ -1,0 +1,74 @@
+package org.example;
+
+//Zadanie 1 Zdefiniować dowolną klasę o jednym polu będącym liczbą rzeczywistą i jednym polu będącym napisem. Wygenerować 5 elementów tej klasy.
+//        Stworzyć dwa zbiory sortowane według różnych kryteriów i dodać do nich te 5 elementów.
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Set;
+import java.util.TreeSet;
+import java.util.*;
+
+class dowolna
+{
+    Integer rzeczywista;
+    String napis;
+
+    public dowolna(int rzeczywista, String napis)
+    {
+        this.rzeczywista = rzeczywista;
+        this.napis = napis;
+    }
+
+    @Override
+    public String toString() {
+        return rzeczywista + " " + napis;
+    }
+}
+
+public class App
+{
+    public static void main( String[] args ) {
+        dowolna element1 = new dowolna(99, "GOCHA");
+        dowolna element2 = new dowolna(1, "Kornilowicz");
+        dowolna element3 = new dowolna(54, "Jankowski");
+        dowolna element4 = new dowolna(13, "Naumowicz");
+        dowolna element5 = new dowolna(20, "Tomaszuk");
+
+        ArrayList<dowolna> list = new ArrayList<>();
+        list.add(element1);
+        list.add(element2);
+        list.add(element3);
+        list.add(element4);
+        list.add(element5);
+        System.out.println(list);
+
+        Collections.sort(list, new Comparator<dowolna>(){
+
+            public int compare(dowolna o1, dowolna o2)
+            {
+                return o1.napis.compareTo(o2.napis);
+            }
+        });
+        System.out.println("Sortowanie po stringach: " + list);
+
+        ArrayList<dowolna> list2 = new ArrayList<>();
+        list2.add(element1);
+        list2.add(element2);
+        list2.add(element3);
+        list2.add(element4);
+        list2.add(element5);
+        
+        Collections.sort(list2, new Comparator<dowolna>(){
+
+            public int compare(dowolna o1, dowolna o2)
+            {
+                return o1.rzeczywista.compareTo(o2.rzeczywista);
+            }
+        });
+        System.out.println("Sortowanie po liczbach: " + list2);
+    }
+}
+
+
+
